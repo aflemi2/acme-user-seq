@@ -1,12 +1,9 @@
-<html>
-  <head>
-    <title>Alan's Acme Seq App</title>
-  </head>
-  <body>
-    <form action='/users' method='POST'>
+{% extends './layout.html' %}
+{% block content %}
+   <form action='/users' method='POST'>
       <div>
         <label>User Name</label>
-        <input name="name" value='Enter name for user'/>
+        <input name="name"/>
       </div>
       <button>Create User</button>
     </form>
@@ -15,10 +12,11 @@
       <li>
         {{ user.name }}
         <form method='POST' action='/users/{{user.id}}?_method=DELETE'>
-          <button>Delete</button>
+          <button class="btn btn-danger">Delete</button>
         </form>
       </li>
     {% endfor %}
     </ul>
-  </body>
-</html>
+{% endblock %}
+
+
