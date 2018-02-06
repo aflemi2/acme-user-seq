@@ -15,11 +15,6 @@ app.get('/users', (req, res, next)=>{
   .catch( err => next(err));
 });
 
-// app.post('/users', (req, res, next)=>{
-//   User.create(req.body)
-//   .then( user => res.redirect('/users'))
-//   .catch( err => next(err));
-// })
 
 app.post('/users', (req, res, next)=> {
    if (req.body.name.length === 0) {
