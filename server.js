@@ -16,7 +16,13 @@ const port = process.env.PORT || 3000;
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')
 ));
 
-app.use('/users', require('./routes/users'));
+//do i need this?
+app.use((req, res, next)=> {
+  res.locals.path = req.url;
+  next();
+});
+
+app.use('/', require('./routes/users'));
 
 app.listen(port, ()=> console.log(`listening on port ${port}!!!`));
 
